@@ -163,7 +163,7 @@ namespace MissionPlanner.Controls
         private void DisplayACGCS()
         {
             TXT_AC_position.Text = MainV2.comPort.MAV.cs.Location.ToString();
-            TXT_GCS_position.Text = MainV2.comPort.MAV.cs.MovingBase.ToString();
+            TXT_GCS_position.Text = MainV2.comPort.MAV.cs.Base.ToString();
             TXT_AZ_MAV.Text = Math.Round(gcs_ac_az, 2).ToString();
             TXT_EL_MAV.Text = Math.Round(gcs_ac_el, 2).ToString();
             
@@ -201,9 +201,9 @@ namespace MissionPlanner.Controls
                 //Console.WriteLine("MAESTRO: real-time exception");
             }
 
-            gcs_ac_az = MainV2.comPort.MAV.cs.MovingBase.GetBearing(MainV2.comPort.MAV.cs.Location);
+            gcs_ac_az = MainV2.comPort.MAV.cs.Base.GetBearing(MainV2.comPort.MAV.cs.Location);
 
-            double ac_dist = MainV2.comPort.MAV.cs.MovingBase.GetDistance(MainV2.comPort.MAV.cs.Location);
+            double ac_dist = MainV2.comPort.MAV.cs.Base.GetDistance(MainV2.comPort.MAV.cs.Location);
             if (ac_dist > 50.0)
             {
                 gcs_ac_el = Math.Atan2(MainV2.comPort.MAV.cs.alt, ac_dist)*180.0/Math.PI;
@@ -266,9 +266,9 @@ namespace MissionPlanner.Controls
 
             Console.WriteLine("Use Map Center Clicked: " + gotolocation.ToString());
 
-            MainV2.comPort.MAV.cs.MovingBase = gotolocation;
-            MainV2.comPort.MAV.cs.MovingBase.Tag = gotolocation.Tag;
-            Console.WriteLine("Moving Base updated to: " + MainV2.comPort.MAV.cs.MovingBase.ToString());
+            MainV2.comPort.MAV.cs.Base = gotolocation;
+            MainV2.comPort.MAV.cs.Base.Tag = gotolocation.Tag;
+            Console.WriteLine("Moving Base updated to: " + MainV2.comPort.MAV.cs.Base.ToString());
         }
     }
 }
