@@ -34,7 +34,6 @@
             this.lblCommStats = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblMission = new System.Windows.Forms.Label();
-            this.butPullup = new MissionPlanner.Controls.MyButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lblAHRS1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -42,6 +41,8 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.TXT_msgBox = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pic_is_armed = new Bulb.LedBulb();
+            this.label1 = new System.Windows.Forms.Label();
             this.horusControlMode1 = new MissionPlanner.Controls.HORUSControlMode();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -54,7 +55,7 @@
             // 
             this.groupBox1.Controls.Add(this.ledHB);
             this.groupBox1.Controls.Add(this.lblCommStats);
-            this.groupBox1.Location = new System.Drawing.Point(4, 121);
+            this.groupBox1.Location = new System.Drawing.Point(4, 131);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(216, 81);
             this.groupBox1.TabIndex = 1;
@@ -83,8 +84,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lblMission);
-            this.groupBox2.Controls.Add(this.butPullup);
-            this.groupBox2.Location = new System.Drawing.Point(3, 208);
+            this.groupBox2.Location = new System.Drawing.Point(3, 218);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(216, 81);
             this.groupBox2.TabIndex = 2;
@@ -101,22 +101,10 @@
             this.lblMission.TabIndex = 2;
             this.lblMission.Text = "label1";
             // 
-            // butPullup
-            // 
-            this.butPullup.Enabled = false;
-            this.butPullup.Location = new System.Drawing.Point(152, 10);
-            this.butPullup.Name = "butPullup";
-            this.butPullup.Size = new System.Drawing.Size(58, 65);
-            this.butPullup.TabIndex = 0;
-            this.butPullup.Text = "Advance to Pullup";
-            this.butPullup.TextColorNotEnabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(87)))), ((int)(((byte)(4)))));
-            this.butPullup.UseVisualStyleBackColor = true;
-            this.butPullup.Click += new System.EventHandler(this.butPullup_Click);
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.lblAHRS1);
-            this.groupBox3.Location = new System.Drawing.Point(4, 403);
+            this.groupBox3.Location = new System.Drawing.Point(4, 413);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(216, 102);
             this.groupBox3.TabIndex = 2;
@@ -136,7 +124,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.lblGliderCalcs);
-            this.groupBox4.Location = new System.Drawing.Point(3, 295);
+            this.groupBox4.Location = new System.Drawing.Point(3, 305);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(216, 102);
             this.groupBox4.TabIndex = 3;
@@ -156,7 +144,7 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.TXT_msgBox);
-            this.groupBox5.Location = new System.Drawing.Point(4, 511);
+            this.groupBox5.Location = new System.Drawing.Point(4, 521);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(216, 149);
             this.groupBox5.TabIndex = 4;
@@ -179,6 +167,24 @@
             this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // pic_is_armed
+            // 
+            this.pic_is_armed.Location = new System.Drawing.Point(198, 112);
+            this.pic_is_armed.Name = "pic_is_armed";
+            this.pic_is_armed.On = false;
+            this.pic_is_armed.Size = new System.Drawing.Size(21, 18);
+            this.pic_is_armed.TabIndex = 4;
+            this.pic_is_armed.Text = "ledBulb1";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(89, 115);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(103, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Cut Controller Armed";
+            // 
             // horusControlMode1
             // 
             this.horusControlMode1.BackColor = System.Drawing.Color.Transparent;
@@ -186,6 +192,7 @@
             this.horusControlMode1.Name = "horusControlMode1";
             this.horusControlMode1.Size = new System.Drawing.Size(223, 125);
             this.horusControlMode1.TabIndex = 0;
+            this.horusControlMode1.Load += new System.EventHandler(this.horusControlMode1_Load);
             // 
             // HORUS_Panel
             // 
@@ -193,6 +200,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pic_is_armed);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -211,6 +220,7 @@
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -227,8 +237,9 @@
         private System.Windows.Forms.Label lblGliderCalcs;
         private System.Windows.Forms.Label lblCommStats;
         private Bulb.LedBulb ledHB;
-        private Controls.MyButton butPullup;
         private System.Windows.Forms.Label lblMission;
         private System.Windows.Forms.RichTextBox TXT_msgBox;
+        public Bulb.LedBulb pic_is_armed;
+        private System.Windows.Forms.Label label1;
     }
 }

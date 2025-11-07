@@ -1,5 +1,7 @@
 ﻿using AviFile;
 using IronPython.Runtime.Operations;
+using MissionPlanner.Controls;
+using MissionPlanner.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +13,6 @@ using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MissionPlanner.Utilities;
 
 namespace MissionPlanner
 {
@@ -147,6 +148,15 @@ namespace MissionPlanner
 
             if (linkMessage.msgid == (uint)MAVLink.MAVLINK_MSG_ID.STATUSTEXT)
                 msg_counter = 10;
+
+            if (linkMessage.msgid == (uint)MAVLink.MAVLINK_MSG_ID.BUTTON_CHANGE)
+            {
+                //Console.WriteLine("BUTTON MESSAGE: " + linkMessage);
+                MAVLink.mavlink_button_change_t packet =
+                    linkMessage.ToStructure<MAVLink.mavlink_button_change_t>();
+
+                pic_is_armed.On = (packet.state==1);
+            }
         }
 
 
@@ -276,7 +286,7 @@ namespace MissionPlanner
                 lblMission.Text += "Target Alt:".PadRight(10) +_host.cs.targetalt.ToString("0") + "\n";
                 lblMission.Text += "Target Speed:".PadRight(10) + _host.cs.targetairspeed.ToString("0.0") + "\n";
 
-                butPullup.Enabled = _host.cs.wpno == 3;  // At this point, assume wp 3 is the alt hold
+                //butPullup.Enabled = _host.cs.wpno == 3;  // At this point, assume wp 3 is the alt hold
             } catch
             {
 
@@ -319,27 +329,52 @@ namespace MissionPlanner
             }
         }
 
-        private void butPullup_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (_host.cs.mode.ToLower() != "AUTO".ToLower())
-                {
-                    CustomMessageBox.Show("Not in Auto", Strings.ERROR);
-                    return;
-                }
-                if (
-                CustomMessageBox.Show("Are you sure you want to Advance to Pullup??", "Action",
-                    MessageBoxButtons.YesNo) == (int)DialogResult.Yes)
-                {
-                    _host.comPort.setWPCurrent(_host.comPort.MAV.sysid, _host.comPort.MAV.compid, Convert.ToUInt16(_host.cs.wpno + 1));
+        //private void butPullup_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (_host.cs.mode.ToLower() != "AUTO".ToLower())
+        //        {
+        //            CustomMessageBox.Show("Not in Auto", Strings.ERROR);
+        //            return;
+        //        }
+        //        if (
+        //        CustomMessageBox.Show("Are you sure you want to Advance to Pullup??", "Action",
+        //            MessageBoxButtons.YesNo) == (int)DialogResult.Yes)
+        //        {
+        //            // Old V1 Method: 
+        //            //_host.comPort.setWPCurrent(_host.comPort.MAV.sysid, _host.comPort.MAV.compid, Convert.ToUInt16(_host.cs.wpno + 1));
 
-                }
-            }
-            catch {
-                CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
-            }
+        //            try
+        //            {
+        //                // Currently this is hard coded to 221 as per https://github.com/ArduPilot/ardupilot/pull/30962/commits/46626d64a15e6b4293add42e78cb3bb48c14d3e3
+        //                int PULLUP_AUX_COMMAND = 221;
+        //                if (MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent, MAVLink.MAV_CMD.DO_AUX_FUNCTION, PULLUP_AUX_COMMAND, 1, 0, 0,
+        //                    0, 0, 0))
+        //                {
+                            
+        //                }
+        //                else
+        //                {
+        //                    CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+        //                }
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                CustomMessageBox.Show(Strings.CommandFailed + ex.ToString(), Strings.ERROR);
+        //            }
+
+        //        }
+        //    }
+        //    catch {
+        //        CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+        //    }
              
+        //}
+
+        private void horusControlMode1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

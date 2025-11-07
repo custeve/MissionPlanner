@@ -206,19 +206,40 @@ namespace MissionPlanner.Controls
                     MessageBoxButtons.YesNo) == (int)DialogResult.Yes)
                     {
 
-                        var cmd = (MAVLink.MAV_CMD)Enum.Parse(typeof(MAVLink.MAV_CMD), "DO_PARACHUTE");
 
-                        if (MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent, 
-                                                     (byte)MainV2.comPort.compidcurrent, 
-                                                     MAVLink.MAV_CMD.DO_SET_SERVO, 
-                                                     10,1900, 0, 0, 0, 0, 0))
+                        try
                         {
-                            Console.WriteLine("Balloon Release Balloon Release Balloon Release Balloon Release Balloon Release Balloon Release Balloon Release ");
+                            // Currently this is hard coded to 221 as per https://github.com/ArduPilot/ardupilot/pull/30962/commits/46626d64a15e6b4293add42e78cb3bb48c14d3e3
+                            int PULLUP_AUX_COMMAND = 221;
+                            if (MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent, MAVLink.MAV_CMD.DO_AUX_FUNCTION, PULLUP_AUX_COMMAND, 1, 0, 0,
+                                0, 0, 0))
+                            {
+
+                            }
+                            else
+                            {
+                                CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+                            }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            CustomMessageBox.Show(Strings.CommandFailed + " " + cmd, Strings.ERROR);
+                            CustomMessageBox.Show(Strings.CommandFailed + ex.ToString(), Strings.ERROR);
                         }
+
+                        // Old V1 Method
+                        
+
+                        //if (MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent, 
+                        //                             (byte)MainV2.comPort.compidcurrent, 
+                        //                             MAVLink.MAV_CMD.DO_SET_SERVO, 
+                        //                             10,1900, 0, 0, 0, 0, 0))
+                        //{
+                        //    Console.WriteLine("Balloon Release Balloon Release Balloon Release Balloon Release Balloon Release Balloon Release Balloon Release ");
+                        //}
+                        //else
+                        //{
+                        //    CustomMessageBox.Show(Strings.CommandFailed + " " + cmd, Strings.ERROR);
+                        //}
 
                     }
 

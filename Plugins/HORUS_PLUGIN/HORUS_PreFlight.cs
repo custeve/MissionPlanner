@@ -196,6 +196,8 @@ namespace MissionPlanner.Controls
                 if (CB_pilotReady.Checked && (!CB_notFlying.Checked || !CB_pilotReady.Checked || !CB_IsArmed.Checked)) CB_pilotReady.Checked = false;
 
                 if (CB_pilotReady.Checked && CB_paco_rdy.Checked && CB_payload_rdy.Checked ) BUT_SET_AUTO.Enabled = true;
+
+                cb_pic_armed.Checked = _panel.pic_is_armed.On; 
             } catch
             {
 
