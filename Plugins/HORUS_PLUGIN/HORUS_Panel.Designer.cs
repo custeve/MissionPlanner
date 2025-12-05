@@ -43,12 +43,15 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pic_is_armed = new Bulb.LedBulb();
             this.label1 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.rt_sensorData = new System.Windows.Forms.RichTextBox();
             this.horusControlMode1 = new MissionPlanner.Controls.HORUSControlMode();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -104,7 +107,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.lblAHRS1);
-            this.groupBox3.Location = new System.Drawing.Point(4, 413);
+            this.groupBox3.Location = new System.Drawing.Point(4, 381);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(216, 102);
             this.groupBox3.TabIndex = 2;
@@ -126,7 +129,7 @@
             this.groupBox4.Controls.Add(this.lblGliderCalcs);
             this.groupBox4.Location = new System.Drawing.Point(3, 305);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(216, 102);
+            this.groupBox4.Size = new System.Drawing.Size(216, 70);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Glide Calcs";
@@ -144,7 +147,7 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.TXT_msgBox);
-            this.groupBox5.Location = new System.Drawing.Point(4, 521);
+            this.groupBox5.Location = new System.Drawing.Point(4, 489);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(216, 149);
             this.groupBox5.TabIndex = 4;
@@ -185,6 +188,28 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Cut Controller Armed";
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.rt_sensorData);
+            this.groupBox6.Location = new System.Drawing.Point(4, 644);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(216, 149);
+            this.groupBox6.TabIndex = 6;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Sensor Data";
+            // 
+            // rt_sensorData
+            // 
+            this.rt_sensorData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rt_sensorData.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rt_sensorData.ForeColor = System.Drawing.Color.White;
+            this.rt_sensorData.Location = new System.Drawing.Point(9, 19);
+            this.rt_sensorData.Name = "rt_sensorData";
+            this.rt_sensorData.ReadOnly = true;
+            this.rt_sensorData.Size = new System.Drawing.Size(201, 124);
+            this.rt_sensorData.TabIndex = 5;
+            this.rt_sensorData.Text = "Waiting For Data...";
+            // 
             // horusControlMode1
             // 
             this.horusControlMode1.BackColor = System.Drawing.Color.Transparent;
@@ -200,6 +225,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pic_is_armed);
             this.Controls.Add(this.groupBox5);
@@ -209,7 +235,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.horusControlMode1);
             this.Name = "HORUS_Panel";
-            this.Size = new System.Drawing.Size(234, 681);
+            this.Size = new System.Drawing.Size(234, 803);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -219,6 +245,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -241,5 +268,7 @@
         private System.Windows.Forms.RichTextBox TXT_msgBox;
         public Bulb.LedBulb pic_is_armed;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.RichTextBox rt_sensorData;
     }
 }

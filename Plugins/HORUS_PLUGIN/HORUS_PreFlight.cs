@@ -1,13 +1,15 @@
-﻿using System;
+﻿using DotSpatial.Projections.Transforms;
+using MissionPlanner.Utilities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MissionPlanner.Utilities;
 
 namespace MissionPlanner.Controls
 {
@@ -16,7 +18,9 @@ namespace MissionPlanner.Controls
         private int messagecount;
         private Plugin.PluginHost _host = null;
         private HORUS_Panel _panel = null;
-        private Dual_Serial_Ports _dsp = null;
+        Process dspProcess;
+        private ProcessStartInfo proc1 = new ProcessStartInfo();
+
         public HORUS_PreFlight()
         {
             InitializeComponent();
@@ -370,11 +374,17 @@ namespace MissionPlanner.Controls
 
         private void but_openDSP_Click(object sender, EventArgs e)
         {
-            if (_dsp ==  null)
-            {
-                _dsp = new Dual_Serial_Ports();
-            }
-            _dsp.Show();
+            Console.WriteLine("Starting DSP Program");            //string strCmdText;
+
+            string anyCommand = string.Format(AppContext.BaseDirectory + "plugins/horus_dsp.exe");
+            proc1.UseShellExecute = true;
+
+            proc1.WorkingDirectory = @AppContext.BaseDirectory + "plugins/";
+            proc1.WindowStyle = ProcessWindowStyle.Normal;
+            proc1.FileName = @"C:\Windows\System32\cmd.exe";
+            proc1.Arguments = "/k " + anyCommand;
+
+            dspProcess = Process.Start(proc1);
         }
     }
 }

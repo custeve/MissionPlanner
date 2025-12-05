@@ -20,7 +20,7 @@ namespace HORUS_plugin_Plugin
         private HORUSControlMode controlMode = new HORUSControlMode();
         private MAVLinkInspectorControl mavLink = null;
         private HORUS_TAB ht = new HORUS_TAB();
-        private Dual_Serial_Ports dspTab = new Dual_Serial_Ports();
+        
         
 
         public override string Name

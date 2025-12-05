@@ -29,6 +29,8 @@ namespace MissionPlanner
         int mav_ftp_counter = 0;
         int msg_counter = 0;
 
+        String[] sensorStrings = new string[16]; 
+
         private int messagecount;
 
         private MAVLinkInterface mav;
@@ -93,7 +95,17 @@ namespace MissionPlanner
             }
 
             
+            StringBuilder _txt = new StringBuilder();
 
+            sensorStrings.ForEach<String>(x =>
+            {
+                if (x!=null && x.Length > 0)
+                    _txt.Append(x.replace("\0","").ToString() + "\n");
+            });
+            _txt.Append("---\n");
+            //Console.WriteLine("[" + _txt.ToString() + "]");
+            rt_sensorData.Text = _txt.ToString();
+            //Console.WriteLine(rt_sensorData.Text);
         }
 
 
@@ -156,6 +168,28 @@ namespace MissionPlanner
                     linkMessage.ToStructure<MAVLink.mavlink_button_change_t>();
 
                 pic_is_armed.On = (packet.state==1);
+            }
+            if (linkMessage.msgid == (uint)MAVLink.MAVLINK_MSG_ID.DATA32)
+            {
+                MAVLink.mavlink_data32_t rd = linkMessage.ToStructure<MAVLink.mavlink_data32_t>();
+                
+
+                byte[] fl_data = new byte[28];
+                byte fl_size, fl_type, fl_type2, fl_id; 
+                fl_type = rd.data[0];
+                fl_type2 = rd.data[1];
+                fl_id = rd.data[2];
+                fl_size = rd.data[3];
+
+                Array.Copy(rd.data, 4, fl_data, 0, 28);
+                String _txt = Encoding.UTF8.GetString(fl_data).Trim() ;
+                //Console.WriteLine("Data32 ID: " + fl_id + " Data: " + _txt);
+                if (fl_id < 16)
+                {
+                    sensorStrings[fl_id] =DateTime.Now.ToString("HH:mm:ss ") + _txt;
+                }
+
+                
             }
         }
 
