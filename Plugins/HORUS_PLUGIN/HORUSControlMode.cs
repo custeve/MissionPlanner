@@ -252,5 +252,37 @@ namespace MissionPlanner.Controls
             }
 
         }
+
+        private void but_fmcA_Click(object sender, EventArgs e)
+        {
+            if (
+               CustomMessageBox.Show("Are you sure you want to send FMC A??", "Action",
+                   MessageBoxButtons.YesNo) == (int)DialogResult.Yes)
+            {
+                Console.WriteLine("Sending FMC CMD A");
+                MAVLink.mavlink_data16_t cmd_out = new MAVLink.mavlink_data16_t();
+                cmd_out.type = 88;
+                cmd_out.len = (byte)16;
+                cmd_out.data = Encoding.ASCII.GetBytes($"{"&mavcmdA",-16}");
+                Console.WriteLine("Sending MAVLink command.");
+                MainV2.comPort.sendPacket(cmd_out, MainV2.comPort.MAV.sysid, 99);
+            }
+        }
+
+        private void but_fmcB_Click(object sender, EventArgs e)
+        {
+            if (
+               CustomMessageBox.Show("Are you sure you want to send FMC B??", "Action",
+                   MessageBoxButtons.YesNo) == (int)DialogResult.Yes)
+            {
+                Console.WriteLine("Sending FMC CMD B");
+                MAVLink.mavlink_data16_t cmd_out = new MAVLink.mavlink_data16_t();
+                cmd_out.type = 88;
+                cmd_out.len = (byte)16;
+                cmd_out.data = Encoding.ASCII.GetBytes($"{"&mavcmdB",-16}");
+                Console.WriteLine("Sending MAVLink command.");
+                MainV2.comPort.sendPacket(cmd_out, MainV2.comPort.MAV.sysid, 99);
+            }
+        }
     }
 }

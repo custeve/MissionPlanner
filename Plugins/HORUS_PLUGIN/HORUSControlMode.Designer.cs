@@ -35,6 +35,8 @@ namespace MissionPlanner.Controls
             this.setRTL = new MissionPlanner.Controls.MyButton();
             this.butBalloon = new MissionPlanner.Controls.MyButton();
             this.butParachute = new MissionPlanner.Controls.MyButton();
+            this.but_fmcA = new MissionPlanner.Controls.MyButton();
+            this.but_fmcB = new MissionPlanner.Controls.MyButton();
             this.SuspendLayout();
             // 
             // setFBWA
@@ -118,11 +120,43 @@ namespace MissionPlanner.Controls
             this.butParachute.UseVisualStyleBackColor = true;
             this.butParachute.Click += new System.EventHandler(this.butParachute_Click);
             // 
+            // but_fmcA
+            // 
+            this.but_fmcA.BGGradBot = System.Drawing.Color.White;
+            this.but_fmcA.BGGradTop = System.Drawing.Color.MediumSlateBlue;
+            this.but_fmcA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.but_fmcA.Location = new System.Drawing.Point(221, 14);
+            this.but_fmcA.Name = "but_fmcA";
+            this.but_fmcA.Size = new System.Drawing.Size(67, 48);
+            this.but_fmcA.TabIndex = 6;
+            this.but_fmcA.Text = "FMC CMD A";
+            this.but_fmcA.TextColor = System.Drawing.Color.Black;
+            this.but_fmcA.TextColorNotEnabled = System.Drawing.Color.Black;
+            this.but_fmcA.UseVisualStyleBackColor = true;
+            this.but_fmcA.Click += new System.EventHandler(this.but_fmcA_Click);
+            // 
+            // but_fmcB
+            // 
+            this.but_fmcB.BGGradBot = System.Drawing.Color.White;
+            this.but_fmcB.BGGradTop = System.Drawing.Color.MediumSlateBlue;
+            this.but_fmcB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.but_fmcB.Location = new System.Drawing.Point(220, 68);
+            this.but_fmcB.Name = "but_fmcB";
+            this.but_fmcB.Size = new System.Drawing.Size(67, 48);
+            this.but_fmcB.TabIndex = 7;
+            this.but_fmcB.Text = "FMC CMD B";
+            this.but_fmcB.TextColor = System.Drawing.Color.Black;
+            this.but_fmcB.TextColorNotEnabled = System.Drawing.Color.Black;
+            this.but_fmcB.UseVisualStyleBackColor = true;
+            this.but_fmcB.Click += new System.EventHandler(this.but_fmcB_Click);
+            // 
             // HORUSControlMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.but_fmcB);
+            this.Controls.Add(this.but_fmcA);
             this.Controls.Add(this.butParachute);
             this.Controls.Add(this.butBalloon);
             this.Controls.Add(this.setRTL);
@@ -130,7 +164,7 @@ namespace MissionPlanner.Controls
             this.Controls.Add(this.setAuto);
             this.Controls.Add(this.setFBWA);
             this.Name = "HORUSControlMode";
-            this.Size = new System.Drawing.Size(223, 129);
+            this.Size = new System.Drawing.Size(290, 129);
             this.Load += new System.EventHandler(this.IRISSControlMode_Load);
             this.ResumeLayout(false);
 
@@ -144,5 +178,7 @@ namespace MissionPlanner.Controls
         private MyButton setRTL;
         private MyButton butBalloon;
         private MyButton butParachute;
+        private MyButton but_fmcA;
+        private MyButton but_fmcB;
     }
 }

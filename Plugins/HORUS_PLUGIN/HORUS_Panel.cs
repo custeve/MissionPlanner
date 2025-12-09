@@ -184,9 +184,14 @@ namespace MissionPlanner
                 Array.Copy(rd.data, 4, fl_data, 0, 28);
                 String _txt = Encoding.UTF8.GetString(fl_data).Trim() ;
                 //Console.WriteLine("Data32 ID: " + fl_id + " Data: " + _txt);
+                string[] _fields = _txt.Split(',');
                 if (fl_id < 16)
                 {
-                    sensorStrings[fl_id] =DateTime.Now.ToString("HH:mm:ss ") + _txt;
+                    sensorStrings[fl_id] = $"{DateTime.Now.ToString("HH:mm:ss"),-10}";
+                    foreach (string _x in _fields)
+                    {
+                        sensorStrings[fl_id] += $"{_x,-8}";
+                    }
                 }
 
                 
@@ -409,6 +414,19 @@ namespace MissionPlanner
         private void horusControlMode1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Sending FMC Message: " + txt_note.Text);
+            MAVLink.mavlink_data32_t cmd_out = new MAVLink.mavlink_data32_t();
+            cmd_out.type = 66;
+            cmd_out.len = (byte)txt_note.TextLength;
+            cmd_out.data = Encoding.ASCII.GetBytes(txt_note.Text.PadRight(32, ' '));
+            Console.WriteLine("Sending MAVLink command.");
+            MainV2.comPort.sendPacket(cmd_out, MainV2.comPort.MAV.sysid, 99);
+
+            txt_note.Clear();
         }
     }
 }
