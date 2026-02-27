@@ -1,0 +1,183 @@
+﻿Diagnose log at 2025-12-09T22:48:21Z
+
+AppPath: C:\Program Files\Git\mingw64\bin\git-credential-manager.exe
+InstallDir: C:\Program Files\Git\mingw64\bin\
+Version: 2.6.1+786ab03440ddc82e807a97c0e540f5247e44cec6
+
+------------
+Diagnostic: Environment
+Skipped: False
+Success: True
+Exception: None
+Log:
+OSType: Windows
+OSVersion: 10.0 (build 26100)
+Reading environment variables... OK
+ Variables:
+HOMEPATH=\Users\steve
+DriverData=C:\Windows\System32\Drivers\DriverData
+COMPUTERNAME=STEVELAP
+GIT_TRACE2_PARENT_SID=f2b6e8d3-8d2f-4b4b-83be-ab1c4dbfb0a6
+CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+OneDrive=C:\Users\steve\OneDrive
+SESSIONNAME=Console
+EFC_12888_2775293581=1
+PROCESSOR_REVISION=ba03
+PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
+SystemDrive=C:
+GIT_EXEC_PATH=C:/Program Files/Git/mingw64/libexec/git-core
+TEMP=C:\Users\steve\AppData\Local\Temp
+LOCALAPPDATA=C:\Users\steve\AppData\Local
+MSYSTEM=MINGW64
+VXIPNPPATH64=C:\Program Files\IVI Foundation\VISA\
+TERM=xterm-256color
+COLORTERM=truecolor
+USERDOMAIN=STEVELAP
+VXIPNPPATH=C:\Program Files (x86)\IVI Foundation\VISA\
+EFC_12888_1592913036=1
+PROCESSOR_LEVEL=6
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 186 Stepping 3, GenuineIntel
+TMPDIR=C:\Users\steve\AppData\Local\Temp
+ProgramFiles(x86)=C:\Program Files (x86)
+PUBLIC=C:\Users\Public
+NUMBER_OF_PROCESSORS=12
+FPS_BROWSER_USER_PROFILE_STRING=Default
+CommonProgramFiles=C:\Program Files (x86)\Common Files
+TMP=C:\Users\steve\AppData\Local\Temp
+IGCCSVC_DB=AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAx3luLJtLJUuRVn1PCkS0twQAAAACAAAAAAAQZgAAAAEAACAAAABnw9i6nRxrrV42pbBqaQGgOj18EkGZHjrGLLGWgBObFwAAAAAOgAAAAAIAACAAAAAOolR6GE7lKdIHqJhJdKmI8LpGIIJAc4DTaW2yN+VdmWAAAAC2KWhOqwPYJ/sJPFmq0YGjlKLpzjC4ejhxYHJHimbwwNWtg6kvrZV8mgehg/gJR8QgDE/VkY93aR65ZBKNHK/zTZ826C1Xt6tDqKXVEuP94ND5SaONhp1DjmKxJbLkLJJAAAAAyJ27+wahKEcn07VL9j6XufnoZmRjEZdqzIjjazWuDgLGd1siMVvc0DpqfREC9gZT8ZzG1kbblXq8FxgUdyVyyg==
+PLINK_PROTOCOL=ssh
+ProgramData=C:\ProgramData
+ProgramW6432=C:\Program Files
+EFC_12888_2283032206=1
+ProgramFiles=C:\Program Files (x86)
+SystemRoot=C:\WINDOWS
+HOME=C:\Users\steve
+EFC_12888_3789132940=1
+LC_CTYPE=C.UTF-8
+CommonProgramW6432=C:\Program Files\Common Files
+ZES_ENABLE_SYSMAN=1
+LOGONSERVER=\\STEVELAP
+USERPROFILE=C:\Users\steve
+USERDOMAIN_ROAMINGPROFILE=STEVELAP
+APPDATA=C:\Users\steve\AppData\Roaming
+HOMEDRIVE=C:
+EFC_12888_1262719628=1
+PSModulePath=C:\Users\steve\Documents\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+USERNAME=steve
+PROCESSOR_ARCHITEW6432=AMD64
+FPS_BROWSER_APP_PROFILE_STRING=Internet Explorer
+PROCESSOR_ARCHITECTURE=x86
+OS=Windows_NT
+ComSpec=C:\WINDOWS\system32\cmd.exe
+Path=C:/Program Files/Git/mingw64/libexec/git-core;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\steve\bin;C:\Program Files (x86)\Pololu\Maestro\bin;C:\Program Files\Microsoft\jdk-11.0.16.101-hotspot\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Program Files\usbipd-win\;C:\Program Files\RTLSDR\;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\bin\Hostx64\x64;C:\MinGW\bin;C:\Program Files (x86)\MAVProxy;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin\;C:\Program Files\IVI Foundation\VISA\Win64\Bin\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;C:\Program Files\netCDF 4.9.2\bin;C:\Program Files (x86)\MAVProxy;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Users\steve\AppData\Local\Microsoft\WindowsApps;C:\Users\steve\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\steve\.dotnet\tools;C:\Users\steve\AppData\Local\gitkraken\bin;C:\Users\steve\AppData\Local\Microsoft\WindowsApps;C:\Users\steve\.dotnet\tools
+windir=C:\WINDOWS
+ALLUSERSPROFILE=C:\ProgramData
+
+
+------------
+Diagnostic: File system
+Skipped: False
+Success: True
+Exception: None
+Log:
+Temporary directory is 'C:\Users\steve\AppData\Local\Temp\'...
+Checking basic file I/O...
+Writing to temporary file 'C:\Users\steve\AppData\Local\Temp\31154f27958d9471c3cc6421'... OK
+Reading from temporary file 'C:\Users\steve\AppData\Local\Temp\31154f27958d9471c3cc6421'... OK
+Deleting temporary file 'C:\Users\steve\AppData\Local\Temp\31154f27958d9471c3cc6421'... OK
+Testing IFileSystem instance...
+UserHomePath: C:\Users\steve
+UserDataDirectoryPath: C:\Users\steve\.gcm
+GetCurrentDirectory(): C:\Users\steve\Documents\HORUS\MissionPlanner
+
+------------
+Diagnostic: Networking
+Skipped: False
+Success: True
+Exception: None
+Log:
+Checking networking and HTTP stack...
+Creating HTTP client... OK
+IsNetworkAvailable: True
+Sending HEAD request to http://example.com...Sending HEAD request to https://example.com... OK
+Acquiring free TCP port... OK
+Testing local HTTP loopback connections...
+Creating new HTTP listener for http://localhost:61224/... OK
+Waiting for loopback connection... OK
+Writing response... OK
+Waiting for response data... OK
+Loopback connection data OK
+
+------------
+Diagnostic: Git
+Skipped: False
+Success: True
+Exception: None
+Log:
+Getting Git version... OK
+Git version is '2.52.0.windows.1'
+Locating current repository...Git repository at 'C:/Users/steve/Documents/HORUS/MissionPlanner/.git'
+ OK
+Listing all Git configuration... OK
+Git configuration:
+file:C:/Program Files/Git/etc/gitconfig	diff.astextplain.textconv=astextplain
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.clean=git-lfs clean -- %f
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.smudge=git-lfs smudge -- %f
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.process=git-lfs filter-process
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.required=true
+file:C:/Program Files/Git/etc/gitconfig	http.sslbackend=openssl
+file:C:/Program Files/Git/etc/gitconfig	http.sslcainfo=C:/Program Files/Git/mingw64/etc/ssl/certs/ca-bundle.crt
+file:C:/Program Files/Git/etc/gitconfig	core.autocrlf=true
+file:C:/Program Files/Git/etc/gitconfig	core.fscache=true
+file:C:/Program Files/Git/etc/gitconfig	core.symlinks=false
+file:C:/Program Files/Git/etc/gitconfig	pull.rebase=false
+file:C:/Program Files/Git/etc/gitconfig	credential.https://dev.azure.com.usehttppath=true
+file:C:/Program Files/Git/etc/gitconfig	init.defaultbranch=master
+file:C:/Program Files/Git/etc/gitconfig	credential.helper=manager
+file:C:/Users/steve/.gitconfig	user.name=Steve borenstein
+file:C:/Users/steve/.gitconfig	user.email=steve.borenstein@colorado.edu
+file:C:/Users/steve/.gitconfig	credential.helper=manager
+file:C:/Users/steve/.gitconfig	gui.recentrepo=C:/Users/steve/Documents/HORUS/MissionPlanner
+file:.git/config	core.repositoryformatversion=0
+file:.git/config	core.filemode=false
+file:.git/config	core.bare=false
+file:.git/config	core.logallrefupdates=true
+file:.git/config	core.symlinks=false
+file:.git/config	core.ignorecase=true
+file:.git/config	remote.origin.url=https://github.com/custeve/MissionPlanner
+file:.git/config	remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+file:.git/config	branch.steve_develop.remote=origin
+file:.git/config	branch.steve_develop.merge=refs/heads/steve_develop
+file:.git/config	submodule.ExtLibs/mono.active=true
+file:.git/config	submodule.ExtLibs/mono.url=https://github.com/meee1/mono.git
+file:.git/config	credential.helper=store
+file:.git/config	gui.wmstate=normal
+file:.git/config	gui.geometry=1257x773+341+339 175 196
+
+
+------------
+Diagnostic: Credential storage
+Skipped: False
+Success: True
+Exception: None
+Log:
+ICredentialStore instance is of type: CredentialStore
+Writing test credential... OK
+Reading test credential... OK
+Deleting test credential... OK
+
+------------
+Diagnostic: Microsoft authentication (AAD/MSA)
+Skipped: False
+Success: True
+Exception: None
+Log:
+Broker is not enabled.
+Flow type is: Auto
+Gathering MSAL token cache data... OK
+CacheDirectory: C:\Users\steve\AppData\Local\.IdentityService
+CacheFileName: msal.cache
+CacheFilePath: C:\Users\steve\AppData\Local\.IdentityService\msal.cache
+Creating cache helper... OK
+Verifying MSAL token cache persistence... OK
+

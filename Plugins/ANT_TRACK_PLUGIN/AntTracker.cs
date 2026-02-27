@@ -1,19 +1,21 @@
-﻿using System;
+﻿using MissionPlanner.Comms;
+using MissionPlanner.Utilities;
+using Pololu.UsbWrapper;
+using Pololu.Usc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Globalization;
-using System.IO;
-using System.Net.Sockets;
-using MissionPlanner.Comms;
-using MissionPlanner.Utilities;
-using Pololu.Usc;
-using Pololu.UsbWrapper;
+using static Community.CsharpSqlite.Sqlite3.WhereLevel._u;
 
 
 namespace MissionPlanner.Controls
@@ -65,7 +67,7 @@ namespace MissionPlanner.Controls
         {
            
 
-            if (comPort.IsOpen)
+            if (comPort != null && comPort.IsOpen)
             {
                
                 comPort.Close();
@@ -104,7 +106,7 @@ namespace MissionPlanner.Controls
                     CustomMessageBox.Show(Strings.ErrorConnecting + "\n" + ex.ToString(), Strings.ERROR);
                     return;
                 }
-
+                TXT_rot_position.Text = "Connected!"; 
                 BUT_connect.Text = Strings.Stop;
             }
         }
@@ -171,15 +173,83 @@ namespace MissionPlanner.Controls
 
         private void setAZ(double az_in)
         {
-            az_in = Math.Max(0.0,Math.Min(360.0, az_in));
-            device.setTarget(0,  (ushort) (((az_in / 360.0) * SERVO_RANGE) + SERVO_MIN ));
+            az_in = Math.Max(0.0, Math.Min(360.0, az_in));
+            try
+            {
+                if (device != null && device.getSerialNumber() != null)
+                {
+                    
+                    device.setTarget(0, (ushort)(((az_in / 360.0) * SERVO_RANGE) + SERVO_MIN));
+                }
+            }
+            catch { }
+
+            try
+            {
+                if (comPort != null && comPort.IsOpen)
+                {
+                    comPort.Write("[MOVE,2," + az_in.ToString() + "]\n\r");
+                }
+            }
+            catch { }
+
         }
 
         private void setEL(double el_in)
         {
-            el_in = Math.Max(0.0, Math.Min(360.0, el_in));
-            device.setTarget(1, (ushort)(((el_in / 90.0) * SERVO_RANGE) + SERVO_MIN));
+            el_in = Math.Max(0.0, Math.Min(90.0, el_in));
+            try
+            {
+                if (device != null && device.getSerialNumber() != null)
+                {
+                    
+                    device.setTarget(1, (ushort)(((el_in / 90.0) * SERVO_RANGE) + SERVO_MIN));
+                }
+            } 
+            catch { }
+
+            try
+            {
+                if (comPort != null && comPort.IsOpen)
+                {
+                    comPort.Write("[MOVE,3," + el_in.ToString() + "]\n\r");
+                }
+            }
+            catch { }
         }
+
+        private void readRotator()
+        {
+            try // Process Comport Data
+            {
+                if (comPort != null && comPort.IsOpen)
+                {
+
+                    while (comPort.BytesToRead > 0)
+                    {
+                        string line = comPort.ReadLine();
+                        //Console.WriteLine(line); // for debug
+                        lbl_rot_recv.Text = line;
+
+                        try
+                        {
+                            string[] items = line.Trim().Split(',');
+                            TXT_rot_position.Text = "AZ: " + items[2] + " ( " + items[4] + ")     EL: " + items[3] + " (" + items[5] + ")";
+                        }
+                        catch
+                        {
+                            TXT_rot_position.Text = "Unknown!";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -200,6 +270,19 @@ namespace MissionPlanner.Controls
                 txt_status.Text = "Error";
                 //Console.WriteLine("MAESTRO: real-time exception");
             }
+
+            try
+            {
+                if (comPort != null && comPort.IsOpen)
+                {
+                    readRotator();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
 
             gcs_ac_az = MainV2.comPort.MAV.cs.Base.GetBearing(MainV2.comPort.MAV.cs.Location);
 

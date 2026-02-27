@@ -68,6 +68,7 @@ namespace MissionPlanner.Controls
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.USE_MC = new MissionPlanner.Controls.MyButton();
+            this.lbl_rot_recv = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.num_ch0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_ch1)).BeginInit();
             this.SuspendLayout();
@@ -75,11 +76,11 @@ namespace MissionPlanner.Controls
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 415);
+            this.label1.Location = new System.Drawing.Point(4, 339);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 13);
+            this.label1.Size = new System.Drawing.Size(186, 13);
             this.label1.TabIndex = 21;
-            this.label1.Text = "Pick the PWM Port for Rotator";
+            this.label1.Text = "Pick the COM Port for Custom Rotator";
             // 
             // CMB_baudrate
             // 
@@ -94,14 +95,14 @@ namespace MissionPlanner.Controls
             "38400",
             "57600",
             "115200"});
-            this.CMB_baudrate.Location = new System.Drawing.Point(131, 431);
+            this.CMB_baudrate.Location = new System.Drawing.Point(131, 355);
             this.CMB_baudrate.Name = "CMB_baudrate";
             this.CMB_baudrate.Size = new System.Drawing.Size(97, 21);
             this.CMB_baudrate.TabIndex = 20;
             // 
             // BUT_connect
             // 
-            this.BUT_connect.Location = new System.Drawing.Point(242, 428);
+            this.BUT_connect.Location = new System.Drawing.Point(242, 352);
             this.BUT_connect.Name = "BUT_connect";
             this.BUT_connect.Size = new System.Drawing.Size(75, 23);
             this.BUT_connect.TabIndex = 19;
@@ -114,7 +115,7 @@ namespace MissionPlanner.Controls
             // 
             this.CMB_serialport.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CMB_serialport.FormattingEnabled = true;
-            this.CMB_serialport.Location = new System.Drawing.Point(4, 432);
+            this.CMB_serialport.Location = new System.Drawing.Point(4, 356);
             this.CMB_serialport.Name = "CMB_serialport";
             this.CMB_serialport.Size = new System.Drawing.Size(121, 21);
             this.CMB_serialport.TabIndex = 18;
@@ -122,7 +123,7 @@ namespace MissionPlanner.Controls
             // TXT_GCS_position
             // 
             this.TXT_GCS_position.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TXT_GCS_position.Location = new System.Drawing.Point(3, 117);
+            this.TXT_GCS_position.Location = new System.Drawing.Point(3, 88);
             this.TXT_GCS_position.Name = "TXT_GCS_position";
             this.TXT_GCS_position.Size = new System.Drawing.Size(351, 26);
             this.TXT_GCS_position.TabIndex = 22;
@@ -131,7 +132,7 @@ namespace MissionPlanner.Controls
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 103);
+            this.label2.Location = new System.Drawing.Point(4, 74);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 13);
             this.label2.TabIndex = 23;
@@ -140,7 +141,7 @@ namespace MissionPlanner.Controls
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 465);
+            this.label3.Location = new System.Drawing.Point(4, 406);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 13);
             this.label3.TabIndex = 25;
@@ -149,16 +150,16 @@ namespace MissionPlanner.Controls
             // TXT_rot_position
             // 
             this.TXT_rot_position.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TXT_rot_position.Location = new System.Drawing.Point(4, 479);
+            this.TXT_rot_position.Location = new System.Drawing.Point(4, 420);
             this.TXT_rot_position.Name = "TXT_rot_position";
             this.TXT_rot_position.Size = new System.Drawing.Size(313, 26);
             this.TXT_rot_position.TabIndex = 24;
-            this.TXT_rot_position.Text = "0,0,0";
+            this.TXT_rot_position.Text = "Not Connected";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 143);
+            this.label4.Location = new System.Drawing.Point(4, 114);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 13);
             this.label4.TabIndex = 27;
@@ -167,7 +168,7 @@ namespace MissionPlanner.Controls
             // TXT_AC_position
             // 
             this.TXT_AC_position.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TXT_AC_position.Location = new System.Drawing.Point(3, 157);
+            this.TXT_AC_position.Location = new System.Drawing.Point(3, 128);
             this.TXT_AC_position.Name = "TXT_AC_position";
             this.TXT_AC_position.Size = new System.Drawing.Size(351, 26);
             this.TXT_AC_position.TabIndex = 26;
@@ -175,8 +176,8 @@ namespace MissionPlanner.Controls
             // 
             // lineSeparator1
             // 
-            this.lineSeparator1.Location = new System.Drawing.Point(7, 405);
-            this.lineSeparator1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lineSeparator1.Location = new System.Drawing.Point(7, 329);
+            this.lineSeparator1.Margin = new System.Windows.Forms.Padding(2);
             this.lineSeparator1.MaximumSize = new System.Drawing.Size(1500, 2);
             this.lineSeparator1.MinimumSize = new System.Drawing.Size(0, 2);
             this.lineSeparator1.Name = "lineSeparator1";
@@ -186,7 +187,7 @@ namespace MissionPlanner.Controls
             // TXT_AZ_MAV
             // 
             this.TXT_AZ_MAV.Location = new System.Drawing.Point(86, 26);
-            this.TXT_AZ_MAV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TXT_AZ_MAV.Margin = new System.Windows.Forms.Padding(2);
             this.TXT_AZ_MAV.Name = "TXT_AZ_MAV";
             this.TXT_AZ_MAV.Size = new System.Drawing.Size(76, 20);
             this.TXT_AZ_MAV.TabIndex = 29;
@@ -194,7 +195,7 @@ namespace MissionPlanner.Controls
             // TXT_EL_MAV
             // 
             this.TXT_EL_MAV.Location = new System.Drawing.Point(86, 49);
-            this.TXT_EL_MAV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TXT_EL_MAV.Margin = new System.Windows.Forms.Padding(2);
             this.TXT_EL_MAV.Name = "TXT_EL_MAV";
             this.TXT_EL_MAV.Size = new System.Drawing.Size(76, 20);
             this.TXT_EL_MAV.TabIndex = 30;
@@ -220,7 +221,7 @@ namespace MissionPlanner.Controls
             // lineSeparator2
             // 
             this.lineSeparator2.Location = new System.Drawing.Point(6, 185);
-            this.lineSeparator2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lineSeparator2.Margin = new System.Windows.Forms.Padding(2);
             this.lineSeparator2.MaximumSize = new System.Drawing.Size(1500, 2);
             this.lineSeparator2.MinimumSize = new System.Drawing.Size(0, 2);
             this.lineSeparator2.Name = "lineSeparator2";
@@ -250,7 +251,7 @@ namespace MissionPlanner.Controls
             // txt_status
             // 
             this.txt_status.Location = new System.Drawing.Point(69, 223);
-            this.txt_status.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_status.Margin = new System.Windows.Forms.Padding(2);
             this.txt_status.Name = "txt_status";
             this.txt_status.Size = new System.Drawing.Size(248, 20);
             this.txt_status.TabIndex = 36;
@@ -280,7 +281,7 @@ namespace MissionPlanner.Controls
             this.txt_ch0.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.txt_ch0.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_ch0.Location = new System.Drawing.Point(124, 266);
-            this.txt_ch0.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_ch0.Margin = new System.Windows.Forms.Padding(2);
             this.txt_ch0.Name = "txt_ch0";
             this.txt_ch0.Size = new System.Drawing.Size(91, 17);
             this.txt_ch0.TabIndex = 38;
@@ -301,7 +302,7 @@ namespace MissionPlanner.Controls
             this.txt_ch1.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.txt_ch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_ch1.Location = new System.Drawing.Point(220, 266);
-            this.txt_ch1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_ch1.Margin = new System.Windows.Forms.Padding(2);
             this.txt_ch1.Name = "txt_ch1";
             this.txt_ch1.Size = new System.Drawing.Size(91, 17);
             this.txt_ch1.TabIndex = 40;
@@ -310,8 +311,8 @@ namespace MissionPlanner.Controls
             // cb_auto
             // 
             this.cb_auto.AutoSize = true;
-            this.cb_auto.Location = new System.Drawing.Point(154, 198);
-            this.cb_auto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_auto.Location = new System.Drawing.Point(241, 123);
+            this.cb_auto.Margin = new System.Windows.Forms.Padding(2);
             this.cb_auto.Name = "cb_auto";
             this.cb_auto.Size = new System.Drawing.Size(79, 17);
             this.cb_auto.TabIndex = 42;
@@ -321,7 +322,7 @@ namespace MissionPlanner.Controls
             // num_ch0
             // 
             this.num_ch0.Location = new System.Drawing.Point(124, 284);
-            this.num_ch0.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.num_ch0.Margin = new System.Windows.Forms.Padding(2);
             this.num_ch0.Name = "num_ch0";
             this.num_ch0.Size = new System.Drawing.Size(90, 20);
             this.num_ch0.TabIndex = 43;
@@ -329,7 +330,7 @@ namespace MissionPlanner.Controls
             // num_ch1
             // 
             this.num_ch1.Location = new System.Drawing.Point(220, 285);
-            this.num_ch1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.num_ch1.Margin = new System.Windows.Forms.Padding(2);
             this.num_ch1.Name = "num_ch1";
             this.num_ch1.Size = new System.Drawing.Size(90, 20);
             this.num_ch1.TabIndex = 44;
@@ -361,10 +362,10 @@ namespace MissionPlanner.Controls
             // 
             // but_az_0
             // 
-            this.but_az_0.Location = new System.Drawing.Point(124, 307);
-            this.but_az_0.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.but_az_0.Location = new System.Drawing.Point(166, 4);
+            this.but_az_0.Margin = new System.Windows.Forms.Padding(2);
             this.but_az_0.Name = "but_az_0";
-            this.but_az_0.Size = new System.Drawing.Size(90, 19);
+            this.but_az_0.Size = new System.Drawing.Size(80, 19);
             this.but_az_0.TabIndex = 47;
             this.but_az_0.Text = "AZ = 0";
             this.but_az_0.UseVisualStyleBackColor = true;
@@ -372,10 +373,10 @@ namespace MissionPlanner.Controls
             // 
             // but_el_0
             // 
-            this.but_el_0.Location = new System.Drawing.Point(220, 308);
-            this.but_el_0.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.but_el_0.Location = new System.Drawing.Point(250, 4);
+            this.but_el_0.Margin = new System.Windows.Forms.Padding(2);
             this.but_el_0.Name = "but_el_0";
-            this.but_el_0.Size = new System.Drawing.Size(90, 19);
+            this.but_el_0.Size = new System.Drawing.Size(80, 19);
             this.but_el_0.TabIndex = 48;
             this.but_el_0.Text = "EL = 0";
             this.but_el_0.UseVisualStyleBackColor = true;
@@ -383,10 +384,10 @@ namespace MissionPlanner.Controls
             // 
             // but_az_max
             // 
-            this.but_az_max.Location = new System.Drawing.Point(124, 353);
-            this.but_az_max.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.but_az_max.Location = new System.Drawing.Point(166, 50);
+            this.but_az_max.Margin = new System.Windows.Forms.Padding(2);
             this.but_az_max.Name = "but_az_max";
-            this.but_az_max.Size = new System.Drawing.Size(90, 19);
+            this.but_az_max.Size = new System.Drawing.Size(80, 19);
             this.but_az_max.TabIndex = 49;
             this.but_az_max.Text = "AZ = 360";
             this.but_az_max.UseVisualStyleBackColor = true;
@@ -394,10 +395,10 @@ namespace MissionPlanner.Controls
             // 
             // but_el_90
             // 
-            this.but_el_90.Location = new System.Drawing.Point(220, 353);
-            this.but_el_90.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.but_el_90.Location = new System.Drawing.Point(250, 49);
+            this.but_el_90.Margin = new System.Windows.Forms.Padding(2);
             this.but_el_90.Name = "but_el_90";
-            this.but_el_90.Size = new System.Drawing.Size(90, 19);
+            this.but_el_90.Size = new System.Drawing.Size(80, 19);
             this.but_el_90.TabIndex = 50;
             this.but_el_90.Text = "EL = 90";
             this.but_el_90.UseVisualStyleBackColor = true;
@@ -405,10 +406,10 @@ namespace MissionPlanner.Controls
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(124, 331);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Location = new System.Drawing.Point(166, 28);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 19);
+            this.button1.Size = new System.Drawing.Size(80, 19);
             this.button1.TabIndex = 51;
             this.button1.Text = "AZ = 180";
             this.button1.UseVisualStyleBackColor = true;
@@ -416,10 +417,10 @@ namespace MissionPlanner.Controls
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(220, 332);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Location = new System.Drawing.Point(250, 28);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 19);
+            this.button2.Size = new System.Drawing.Size(80, 19);
             this.button2.TabIndex = 52;
             this.button2.Text = "EL=45";
             this.button2.UseVisualStyleBackColor = true;
@@ -427,19 +428,29 @@ namespace MissionPlanner.Controls
             // 
             // USE_MC
             // 
-            this.USE_MC.Location = new System.Drawing.Point(241, 103);
+            this.USE_MC.Location = new System.Drawing.Point(241, 145);
             this.USE_MC.Name = "USE_MC";
-            this.USE_MC.Size = new System.Drawing.Size(75, 23);
+            this.USE_MC.Size = new System.Drawing.Size(75, 35);
             this.USE_MC.TabIndex = 53;
             this.USE_MC.Text = "Use Map Center";
             this.USE_MC.TextColorNotEnabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(87)))), ((int)(((byte)(4)))));
             this.USE_MC.UseVisualStyleBackColor = true;
             this.USE_MC.Click += new System.EventHandler(this.USE_MC_Click);
             // 
+            // lbl_rot_recv
+            // 
+            this.lbl_rot_recv.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_rot_recv.Location = new System.Drawing.Point(4, 380);
+            this.lbl_rot_recv.Name = "lbl_rot_recv";
+            this.lbl_rot_recv.Size = new System.Drawing.Size(313, 20);
+            this.lbl_rot_recv.TabIndex = 55;
+            this.lbl_rot_recv.Text = "- - - ";
+            // 
             // AntTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbl_rot_recv);
             this.Controls.Add(this.USE_MC);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -476,7 +487,7 @@ namespace MissionPlanner.Controls
             this.Controls.Add(this.CMB_baudrate);
             this.Controls.Add(this.BUT_connect);
             this.Controls.Add(this.CMB_serialport);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AntTracker";
             this.Size = new System.Drawing.Size(333, 518);
             ((System.ComponentModel.ISupportInitialize)(this.num_ch0)).EndInit();
@@ -525,5 +536,6 @@ namespace MissionPlanner.Controls
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private MyButton USE_MC;
+        private System.Windows.Forms.Label lbl_rot_recv;
     }
 }
