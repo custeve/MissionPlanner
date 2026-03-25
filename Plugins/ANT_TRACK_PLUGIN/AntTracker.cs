@@ -339,6 +339,31 @@ namespace MissionPlanner.Controls
             setEL(45.0);
         }
 
+        private void BUT_stop_rot_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (comPort != null && comPort.IsOpen)
+                {
+                    comPort.Write("[STOP]\n\r");
+                }
+            }
+            catch { }
+        }
+
+        private void BUT_park_rot_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (comPort != null && comPort.IsOpen)
+                {
+                    comPort.Write("[PARK]\n\r");
+                }
+            }
+            catch { }
+        }
+
         private void USE_MC_Click(object sender, EventArgs e)
         {
             // Use this function to override the GCS location to the map cetner. 
@@ -353,5 +378,7 @@ namespace MissionPlanner.Controls
             MainV2.comPort.MAV.cs.Base.Tag = gotolocation.Tag;
             Console.WriteLine("Moving Base updated to: " + MainV2.comPort.MAV.cs.Base.ToString());
         }
+
+
     }
 }

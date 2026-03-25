@@ -69,6 +69,8 @@ namespace MissionPlanner.Controls
             this.button2 = new System.Windows.Forms.Button();
             this.USE_MC = new MissionPlanner.Controls.MyButton();
             this.lbl_rot_recv = new System.Windows.Forms.Label();
+            this.BUT_stop_rot = new System.Windows.Forms.Button();
+            this.BUT_park_rot = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.num_ch0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_ch1)).BeginInit();
             this.SuspendLayout();
@@ -446,10 +448,35 @@ namespace MissionPlanner.Controls
             this.lbl_rot_recv.TabIndex = 55;
             this.lbl_rot_recv.Text = "- - - ";
             // 
+            // BUT_stop_rot
+            // 
+            this.BUT_stop_rot.BackColor = System.Drawing.Color.IndianRed;
+            this.BUT_stop_rot.Location = new System.Drawing.Point(240, 381);
+            this.BUT_stop_rot.Margin = new System.Windows.Forms.Padding(2);
+            this.BUT_stop_rot.Name = "BUT_stop_rot";
+            this.BUT_stop_rot.Size = new System.Drawing.Size(80, 38);
+            this.BUT_stop_rot.TabIndex = 56;
+            this.BUT_stop_rot.Text = "STOP";
+            this.BUT_stop_rot.UseVisualStyleBackColor = false;
+            this.BUT_stop_rot.Click += new System.EventHandler(this.BUT_stop_rot_Click);
+            // 
+            // BUT_park_rot
+            // 
+            this.BUT_park_rot.Location = new System.Drawing.Point(242, 423);
+            this.BUT_park_rot.Margin = new System.Windows.Forms.Padding(2);
+            this.BUT_park_rot.Name = "BUT_park_rot";
+            this.BUT_park_rot.Size = new System.Drawing.Size(80, 23);
+            this.BUT_park_rot.TabIndex = 57;
+            this.BUT_park_rot.Text = "PARK";
+            this.BUT_park_rot.UseVisualStyleBackColor = true;
+            this.BUT_park_rot.Click += new System.EventHandler(this.BUT_park_rot_Click);
+            // 
             // AntTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.BUT_park_rot);
+            this.Controls.Add(this.BUT_stop_rot);
             this.Controls.Add(this.lbl_rot_recv);
             this.Controls.Add(this.USE_MC);
             this.Controls.Add(this.button2);
@@ -537,5 +564,7 @@ namespace MissionPlanner.Controls
         private System.Windows.Forms.Button button2;
         private MyButton USE_MC;
         private System.Windows.Forms.Label lbl_rot_recv;
+        private System.Windows.Forms.Button BUT_stop_rot;
+        private System.Windows.Forms.Button BUT_park_rot;
     }
 }

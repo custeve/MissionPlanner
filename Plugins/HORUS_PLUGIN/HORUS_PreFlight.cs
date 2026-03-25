@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+
 
 namespace MissionPlanner.Controls
 {
@@ -20,22 +22,61 @@ namespace MissionPlanner.Controls
         private HORUS_Panel _panel = null;
         Process dspProcess;
         private ProcessStartInfo proc1 = new ProcessStartInfo();
+        private string fileName = @"Plugins/horus_param_check.txt";
+        private string filePath = ""; 
+        private List<string[]> data = new List<string[]>();
+
 
         public HORUS_PreFlight()
         {
             InitializeComponent();
 
+            filePath = AppDomain.CurrentDomain.BaseDirectory + fileName;
+            Console.WriteLine("PREFLIGHT: Current working directory: " + filePath);
+
+            try
+            {
+                read_param_file();
+            } catch
+            {
+                Console.WriteLine("HORUS PREFLIGHT: Error Loading Param File."); 
+            }
+
             timer1.Start();
             timer2.Start();
 
-
-
-
-
-
-
         }
 
+        private void scrollableControl1_DoubleClick(object sender, EventArgs e)
+        {
+            read_param_file();
+        }
+
+        private void read_param_file()
+        {
+            data.Clear();
+
+            foreach (string line in File.ReadLines(filePath))
+            {
+                string[] parts = line.Split(',');
+
+                if (parts.Length == 1)
+                {
+                    // Only one value → add blank for second
+                    data.Add(new string[] { parts[0].Trim(), "" });
+                }
+                else if (parts.Length >= 2)
+                {
+                    // Take first two values
+                    data.Add(new string[] { parts[0].Trim(), parts[1].Trim() });
+                }
+            }
+
+            foreach (var item in data)
+            {
+                Console.WriteLine($"PREFLIGHT PARAMS: {item[0]}, {item[1]}");
+            }
+        }
 
         private void cb_openHORUSPanel_CheckedChanged(object sender, EventArgs e)
         {
@@ -209,36 +250,13 @@ namespace MissionPlanner.Controls
 
 
 
-            if (true) // MainV2.instance.FlightData.isPreFlightSelected()) //MainV2.instance.FlightData.tabControlactions.SelectedTab == MainV2.instance.FlightData.IRISS_PreFlight)
-            {
-
-                var messagetime = MainV2.comPort.MAV.cs.messages.LastOrDefault().time;
-                if (messagecount != messagetime.toUnixTime())
-                {
-                    try
-                    {
-                        StringBuilder message = new StringBuilder();
-                        MainV2.comPort.MAV.cs.messages.ForEach(x =>
-                        {
-                            message.Insert(0, x.Item1.ToString("hh:mm:ss") + " : " + x.Item2 + "\n");
-                        });
-                        TXT_msgBox.Text = message.ToString();
-
-                        messagecount = messagetime.toUnixTime();
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Error in messages IRISS PreFlight");
-                    }
-                }
-
 
 
                 //var isitarmed = MainV2.comPort.MAV.cs.armed;
-                BUT_arm.Text = MainV2.comPort.MAV.cs.armed ? "DISARM" : "ARM";
+            BUT_arm.Text = MainV2.comPort.MAV.cs.armed ? "DISARM" : "ARM";
                 
 
-            }
+            
 
 
         }
@@ -247,36 +265,49 @@ namespace MissionPlanner.Controls
         {
             if (MainV2.comPort.BaseStream != null && MainV2.comPort.BaseStream.IsOpen)
             {
-                lblParams.Text = "Imporant Settings: \r\n";
+                if (MainV2.comPort.MAV.cs.armed)
+                {
+                    lblParams.Text = "Not displayed when Armed. \r\n";
+                }
+                else
+                {
+                    lblParams.Text = "Imporant Settings: \r\n";
 
-                displayParamVal("ALT_HOLD_RTL", "cm");
-                displayParamVal("RTL_RADIUS", "m (opt)");
-                displayParamVal("WP_LOITER_RAD", "m");
-                displayParamVal("SERVO9_FUNCTION", "(== 27)");
-                displayParamVal("CHUTE_CHANNEL", "(== 6)");
+                    foreach (var item in data)
+                    {
+                        //Console.WriteLine($"Value1: {item[0]}, Value2: {item[1]}");
+                        displayParamVal(item[0], item[1]);
+                    }
 
-                displayParamVal("AFS_ENABLE", "");
-                displayParamVal("AFS_TERM_ACTION", "");
-                displayParamVal("FENCE_AUTOENABLE", "");
-                displayParamVal("FENCE_ACTION", "");
-                displayParamVal("FS_GCS_ENABL", "");
-                displayParamVal("THR_FAILSAFE", "");
-                displayParamVal("FS_SHORT_ACTN", "");
-                displayParamVal("FS_LONG_ACTN", "");
-                displayParamVal("SYSID_THISMAV", "");
+                    //displayParamVal("ALT_HOLD_RTL", "cm");
+                    //displayParamVal("RTL_RADIUS", "m (opt)");
+                    //displayParamVal("WP_LOITER_RAD", "m");
+                    //displayParamVal("SERVO9_FUNCTION", "(== 27)");
+                    //displayParamVal("CHUTE_CHANNEL", "(== 6)");
 
-                displayParamVal("PUP_ELEV_OFS", "");
-                displayParamVal("PUP_NG_LIM", "");
-                displayParamVal("PUP_NG_JERK_LIM", "");
-                displayParamVal("PUP_PITCH_CD", "");
+                    //displayParamVal("AFS_ENABLE", "");
+                    //displayParamVal("AFS_TERM_ACTION", "");
+                    //displayParamVal("FENCE_AUTOENABLE", "");
+                    //displayParamVal("FENCE_ACTION", "");
+                    //displayParamVal("FS_GCS_ENABL", "");
+                    //displayParamVal("THR_FAILSAFE", "");
+                    //displayParamVal("FS_SHORT_ACTN", "");
+                    //displayParamVal("FS_LONG_ACTN", "");
+                    //displayParamVal("SYSID_THISMAV", "");
 
-                displayParamVal("SCR_USER1", "(MFS on)");
-                displayParamVal("SCR_USER2", "(mar. buf)");
-                displayParamVal("SCR_USER3", "(Cht Rls Alt)");
-                displayParamVal("SCR_USER4", "(Spd Sch On)");
+                    //displayParamVal("PUP_ELEV_OFS", "");
+                    //displayParamVal("PUP_NG_LIM", "");
+                    //displayParamVal("PUP_NG_JERK_LIM", "");
+                    //displayParamVal("PUP_PITCH_CD", "");
 
-                displayParamVal("TERRAIN_ENABLE", "");
+                    //displayParamVal("SCR_USER1", "(MFS on)");
+                    //displayParamVal("SCR_USER2", "(mar. buf)");
+                    //displayParamVal("SCR_USER3", "(Cht Rls Alt)");
+                    //displayParamVal("SCR_USER4", "(Spd Sch On)");
 
+                    //displayParamVal("TERRAIN_ENABLE", "");
+
+                }
             }
             else
             {
@@ -286,7 +317,12 @@ namespace MissionPlanner.Controls
 
         private void displayParamVal(String valName, String units)
         {
-            if (MainV2.comPort.MAV.param.ContainsKey(valName))
+            if (valName.StartsWith("#")) {
+                lblParams.Text += valName.PadRight(24) +
+                                  " " +
+                                  units.PadRight(10) +
+                                  "\n";
+            } else if (MainV2.comPort.MAV.param.ContainsKey(valName))
             {
                 lblParams.Text += valName.PadRight(16) +
                                   MainV2.comPort.MAV.param[valName].ToString().PadLeft(8) +
@@ -295,7 +331,8 @@ namespace MissionPlanner.Controls
                                   "\n";
             } else
             {
-                //Console.WriteLine("No Param: " + valName);
+                lblParams.Text += "INVALID PARAM: " + valName.PadRight(24) +
+                                  "\n";
             }
         }
 
@@ -386,6 +423,8 @@ namespace MissionPlanner.Controls
 
             dspProcess = Process.Start(proc1);
         }
+
+
     }
 }
 

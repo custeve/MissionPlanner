@@ -32,7 +32,6 @@ namespace MissionPlanner.Controls
             this.components = new System.ComponentModel.Container();
             this.BUT_arm = new MissionPlanner.Controls.MyButton();
             this.BUT_asCal = new MissionPlanner.Controls.MyButton();
-            this.TXT_msgBox = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.BUT_SET_AUTO = new MissionPlanner.Controls.MyButton();
             this.CB_pilotReady = new System.Windows.Forms.CheckBox();
@@ -50,13 +49,15 @@ namespace MissionPlanner.Controls
             this.cbMission = new System.Windows.Forms.CheckBox();
             this.but_openDSP = new MissionPlanner.Controls.MyButton();
             this.cb_pic_armed = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.scrollableControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // BUT_arm
             // 
             this.BUT_arm.Enabled = false;
-            this.BUT_arm.Location = new System.Drawing.Point(10, 175);
+            this.BUT_arm.Location = new System.Drawing.Point(10, 232);
             this.BUT_arm.Name = "BUT_arm";
             this.BUT_arm.Size = new System.Drawing.Size(75, 23);
             this.BUT_arm.TabIndex = 0;
@@ -67,7 +68,7 @@ namespace MissionPlanner.Controls
             // 
             // BUT_asCal
             // 
-            this.BUT_asCal.Location = new System.Drawing.Point(10, 104);
+            this.BUT_asCal.Location = new System.Drawing.Point(10, 161);
             this.BUT_asCal.Name = "BUT_asCal";
             this.BUT_asCal.Size = new System.Drawing.Size(75, 23);
             this.BUT_asCal.TabIndex = 1;
@@ -75,14 +76,6 @@ namespace MissionPlanner.Controls
             this.BUT_asCal.TextColorNotEnabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(87)))), ((int)(((byte)(4)))));
             this.BUT_asCal.UseVisualStyleBackColor = true;
             this.BUT_asCal.Click += new System.EventHandler(this.BUT_asCal_Click);
-            // 
-            // TXT_msgBox
-            // 
-            this.TXT_msgBox.Location = new System.Drawing.Point(6, 369);
-            this.TXT_msgBox.Name = "TXT_msgBox";
-            this.TXT_msgBox.Size = new System.Drawing.Size(326, 84);
-            this.TXT_msgBox.TabIndex = 4;
-            this.TXT_msgBox.Text = "";
             // 
             // timer1
             // 
@@ -92,7 +85,7 @@ namespace MissionPlanner.Controls
             // BUT_SET_AUTO
             // 
             this.BUT_SET_AUTO.Enabled = false;
-            this.BUT_SET_AUTO.Location = new System.Drawing.Point(10, 308);
+            this.BUT_SET_AUTO.Location = new System.Drawing.Point(10, 365);
             this.BUT_SET_AUTO.Name = "BUT_SET_AUTO";
             this.BUT_SET_AUTO.Size = new System.Drawing.Size(75, 23);
             this.BUT_SET_AUTO.TabIndex = 6;
@@ -105,8 +98,8 @@ namespace MissionPlanner.Controls
             // 
             this.CB_pilotReady.AutoSize = true;
             this.CB_pilotReady.Enabled = false;
-            this.CB_pilotReady.Location = new System.Drawing.Point(8, 285);
-            this.CB_pilotReady.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CB_pilotReady.Location = new System.Drawing.Point(8, 342);
+            this.CB_pilotReady.Margin = new System.Windows.Forms.Padding(2);
             this.CB_pilotReady.Name = "CB_pilotReady";
             this.CB_pilotReady.Size = new System.Drawing.Size(90, 17);
             this.CB_pilotReady.TabIndex = 10;
@@ -117,8 +110,8 @@ namespace MissionPlanner.Controls
             // 
             this.CB_IsArmed.AutoSize = true;
             this.CB_IsArmed.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.CB_IsArmed.Location = new System.Drawing.Point(10, 203);
-            this.CB_IsArmed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CB_IsArmed.Location = new System.Drawing.Point(10, 260);
+            this.CB_IsArmed.Margin = new System.Windows.Forms.Padding(2);
             this.CB_IsArmed.Name = "CB_IsArmed";
             this.CB_IsArmed.Size = new System.Drawing.Size(56, 17);
             this.CB_IsArmed.TabIndex = 12;
@@ -129,8 +122,8 @@ namespace MissionPlanner.Controls
             // 
             this.CB_notFlying.AutoSize = true;
             this.CB_notFlying.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.CB_notFlying.Location = new System.Drawing.Point(8, 267);
-            this.CB_notFlying.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CB_notFlying.Location = new System.Drawing.Point(8, 324);
+            this.CB_notFlying.Margin = new System.Windows.Forms.Padding(2);
             this.CB_notFlying.Name = "CB_notFlying";
             this.CB_notFlying.Size = new System.Drawing.Size(73, 17);
             this.CB_notFlying.TabIndex = 13;
@@ -141,8 +134,8 @@ namespace MissionPlanner.Controls
             // 
             this.CB_notAuto.AutoSize = true;
             this.CB_notAuto.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.CB_notAuto.Location = new System.Drawing.Point(8, 151);
-            this.CB_notAuto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CB_notAuto.Location = new System.Drawing.Point(8, 208);
+            this.CB_notAuto.Margin = new System.Windows.Forms.Padding(2);
             this.CB_notAuto.Name = "CB_notAuto";
             this.CB_notAuto.Size = new System.Drawing.Size(98, 17);
             this.CB_notAuto.TabIndex = 14;
@@ -152,8 +145,8 @@ namespace MissionPlanner.Controls
             // CB_payload_rdy
             // 
             this.CB_payload_rdy.AutoSize = true;
-            this.CB_payload_rdy.Location = new System.Drawing.Point(8, 224);
-            this.CB_payload_rdy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CB_payload_rdy.Location = new System.Drawing.Point(8, 281);
+            this.CB_payload_rdy.Margin = new System.Windows.Forms.Padding(2);
             this.CB_payload_rdy.Name = "CB_payload_rdy";
             this.CB_payload_rdy.Size = new System.Drawing.Size(98, 17);
             this.CB_payload_rdy.TabIndex = 15;
@@ -163,8 +156,8 @@ namespace MissionPlanner.Controls
             // CB_paco_rdy
             // 
             this.CB_paco_rdy.AutoSize = true;
-            this.CB_paco_rdy.Location = new System.Drawing.Point(8, 246);
-            this.CB_paco_rdy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CB_paco_rdy.Location = new System.Drawing.Point(8, 303);
+            this.CB_paco_rdy.Margin = new System.Windows.Forms.Padding(2);
             this.CB_paco_rdy.Name = "CB_paco_rdy";
             this.CB_paco_rdy.Size = new System.Drawing.Size(104, 17);
             this.CB_paco_rdy.TabIndex = 16;
@@ -175,7 +168,7 @@ namespace MissionPlanner.Controls
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(8, 66);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(107, 17);
             this.checkBox1.TabIndex = 17;
@@ -186,7 +179,7 @@ namespace MissionPlanner.Controls
             // 
             this.cb_openHORUSPanel.AutoSize = true;
             this.cb_openHORUSPanel.Location = new System.Drawing.Point(8, 32);
-            this.cb_openHORUSPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_openHORUSPanel.Margin = new System.Windows.Forms.Padding(2);
             this.cb_openHORUSPanel.Name = "cb_openHORUSPanel";
             this.cb_openHORUSPanel.Size = new System.Drawing.Size(94, 30);
             this.cb_openHORUSPanel.TabIndex = 18;
@@ -196,13 +189,15 @@ namespace MissionPlanner.Controls
             // 
             // scrollableControl1
             // 
+            this.scrollableControl1.AutoScroll = true;
             this.scrollableControl1.Controls.Add(this.lblParams);
             this.scrollableControl1.Font = new System.Drawing.Font("Lucida Sans Typewriter", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scrollableControl1.Location = new System.Drawing.Point(110, 6);
+            this.scrollableControl1.Location = new System.Drawing.Point(135, 6);
             this.scrollableControl1.Name = "scrollableControl1";
-            this.scrollableControl1.Size = new System.Drawing.Size(224, 323);
+            this.scrollableControl1.Size = new System.Drawing.Size(199, 483);
             this.scrollableControl1.TabIndex = 19;
             this.scrollableControl1.Text = "scrollableControl1";
+            this.scrollableControl1.DoubleClick += new System.EventHandler(this.scrollableControl1_DoubleClick);
             // 
             // lblParams
             // 
@@ -216,7 +211,7 @@ namespace MissionPlanner.Controls
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.groupBox1.Location = new System.Drawing.Point(8, 335);
+            this.groupBox1.Location = new System.Drawing.Point(3, 495);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(326, 28);
             this.groupBox1.TabIndex = 20;
@@ -232,7 +227,7 @@ namespace MissionPlanner.Controls
             // 
             this.cbMission.AutoSize = true;
             this.cbMission.Location = new System.Drawing.Point(8, 87);
-            this.cbMission.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbMission.Margin = new System.Windows.Forms.Padding(2);
             this.cbMission.Name = "cbMission";
             this.cbMission.Size = new System.Drawing.Size(95, 17);
             this.cbMission.TabIndex = 21;
@@ -253,7 +248,7 @@ namespace MissionPlanner.Controls
             // cb_pic_armed
             // 
             this.cb_pic_armed.AutoSize = true;
-            this.cb_pic_armed.Location = new System.Drawing.Point(8, 132);
+            this.cb_pic_armed.Location = new System.Drawing.Point(8, 189);
             this.cb_pic_armed.Margin = new System.Windows.Forms.Padding(2);
             this.cb_pic_armed.Name = "cb_pic_armed";
             this.cb_pic_armed.Size = new System.Drawing.Size(122, 17);
@@ -261,10 +256,34 @@ namespace MissionPlanner.Controls
             this.cb_pic_armed.Text = "Cut Ctrl. Armed (PIC)";
             this.cb_pic_armed.UseVisualStyleBackColor = true;
             // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(8, 108);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(90, 17);
+            this.checkBox2.TabIndex = 24;
+            this.checkBox2.Text = "Check Fence";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(8, 129);
+            this.checkBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(95, 17);
+            this.checkBox3.TabIndex = 25;
+            this.checkBox3.Text = "Check Params";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
             // HORUS_PreFlight
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBox3);
+            this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.cb_pic_armed);
             this.Controls.Add(this.but_openDSP);
             this.Controls.Add(this.cbMission);
@@ -279,11 +298,10 @@ namespace MissionPlanner.Controls
             this.Controls.Add(this.CB_IsArmed);
             this.Controls.Add(this.CB_pilotReady);
             this.Controls.Add(this.BUT_SET_AUTO);
-            this.Controls.Add(this.TXT_msgBox);
             this.Controls.Add(this.BUT_asCal);
             this.Controls.Add(this.BUT_arm);
             this.Name = "HORUS_PreFlight";
-            this.Size = new System.Drawing.Size(339, 475);
+            this.Size = new System.Drawing.Size(339, 526);
             this.scrollableControl1.ResumeLayout(false);
             this.scrollableControl1.PerformLayout();
             this.ResumeLayout(false);
@@ -295,7 +313,6 @@ namespace MissionPlanner.Controls
 
         private MyButton BUT_arm;
         private MyButton BUT_asCal;
-        private System.Windows.Forms.RichTextBox TXT_msgBox;
         private System.Windows.Forms.Timer timer1;
         private MyButton BUT_SET_AUTO;
         private System.Windows.Forms.CheckBox CB_pilotReady;
@@ -313,5 +330,7 @@ namespace MissionPlanner.Controls
         private System.Windows.Forms.CheckBox cbMission;
         private MyButton but_openDSP;
         private System.Windows.Forms.CheckBox cb_pic_armed;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox3;
     }
 }
