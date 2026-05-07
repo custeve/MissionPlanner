@@ -31,6 +31,9 @@ namespace MissionPlanner.Controls
         static SerialPort comPort = null; // new SerialPort();
         private double gcs_ac_az;
         private double gcs_ac_el;
+        private int last_az;
+        private int last_el;
+        private int last_com_cnt = 0; 
         Usc device = null;
 
         static internal PointLatLngAlt lastgotolocation = new PointLatLngAlt(0, 0, 0, "Goto last");
@@ -171,6 +174,25 @@ namespace MissionPlanner.Controls
             
         }
 
+        private void set_COM_Rot(int az, int el)
+        {
+            if (az == last_az && el == last_el && last_com_cnt < 5)
+            {
+                last_com_cnt++; 
+                return;
+            }
+
+            last_com_cnt = 0;
+
+            last_az = az;
+            last_el = el;
+
+            if (comPort != null && comPort.IsOpen)
+            {
+                comPort.Write("[MOVE,1," + last_az.ToString() + "," + last_el.ToString() + "]\n\r");
+            }
+        }
+
         private void setAZ(double az_in)
         {
             az_in = Math.Max(0.0, Math.Min(360.0, az_in));
@@ -184,14 +206,18 @@ namespace MissionPlanner.Controls
             }
             catch { }
 
-            try
-            {
-                if (comPort != null && comPort.IsOpen)
-                {
-                    comPort.Write("[MOVE,2," + az_in.ToString() + "]\n\r");
-                }
-            }
-            catch { }
+            set_COM_Rot((int) az_in, last_el);
+
+            
+
+            //try
+            //{
+            //    if (comPort != null && comPort.IsOpen)
+            //    {
+            //        comPort.Write("[MOVE,2," + az_in.ToString() + "]\n\r");
+            //    }
+            //}
+            //catch { }
 
         }
 
@@ -208,14 +234,16 @@ namespace MissionPlanner.Controls
             } 
             catch { }
 
-            try
-            {
-                if (comPort != null && comPort.IsOpen)
-                {
-                    comPort.Write("[MOVE,3," + el_in.ToString() + "]\n\r");
-                }
-            }
-            catch { }
+            set_COM_Rot(last_az, (int) el_in);
+
+            //try
+            //{
+            //    if (comPort != null && comPort.IsOpen)
+            //    {
+            //        comPort.Write("[MOVE,3," + el_in.ToString() + "]\n\r");
+            //    }
+            //}
+            //catch { }
         }
 
         private void readRotator()
